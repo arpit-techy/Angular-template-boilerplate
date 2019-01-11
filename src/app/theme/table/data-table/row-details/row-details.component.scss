@@ -1,0 +1,20 @@
+table {
+    border:0px;
+    border-collapse:collapse;
+    border-spacing:0px;
+    }
+    
+td,img { 
+    padding:0px; 
+    border-width:0px; 
+    margin:0px; 
+}
+.expanded-input{
+    margin-top:3px;
+}
+.ngx-datatable .datatable-footer , datatable-footer{
+    display: none !important;
+}
+.ngx-datatable .datatable-footer{
+    display:none !important;
+}

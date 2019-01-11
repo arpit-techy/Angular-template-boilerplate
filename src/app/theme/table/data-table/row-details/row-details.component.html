@@ -1,0 +1,280 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="''" [classHeader]="true">
+      <!-- This will be a separate component -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="pull-right" [ngStyle]="{'display' : 'flex' , 'padding' : '2%'}">
+
+            <select name="select" class="form-control" [ngStyle]="{'width' : '200px'}">
+              <option value="opt1">Select Category</option>
+              <option value="opt2">Type 2</option>
+              <option value="opt3">Type 3</option>
+              <option value="opt4">Type 4</option>
+              <option value="opt5">Type 5</option>
+              <option value="opt6">Type 6</option>
+              <option value="opt7">Type 7</option>
+              <option value="opt8">Type 8</option>
+            </select>
+            <select name="select" class="form-control" [ngStyle]="{'margin-left': '5%', 'width' : '200px'}">
+              <option value="opt1">Select Sub Category</option>
+              <option value="opt2">Type 2</option>
+              <option value="opt3">Type 3</option>
+              <option value="opt4">Type 4</option>
+              <option value="opt5">Type 5</option>
+              <option value="opt6">Type 6</option>
+              <option value="opt7">Type 7</option>
+              <option value="opt8">Type 8</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- End of the new component -->
+      <span class="code-header">use class <code>expandable</code> and <code>data-table</code> inside ngx-datatable
+        element with <code>ngx-datatable-column</code> elements</span>
+      <ngx-datatable [ngStyle]="{'width' : '100%'}" #myTable class="data-table expandable" [rows]='rows' [limit]="10"
+        [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" (page)="onPage($event)">
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <div class="dt-desc">
+            <!-- Detail table starts here!! -->
+            <ngx-datatable [ngStyle]="{'width' : '100%'}" #myTable class="data-table" [rows]='rows' [limit]="10"
+              [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'">
+              
+              
+              <ngx-datatable-column name="Subtitle">
+                <ng-template class="form-material" let-row="row" ngx-datatable-cell-template>
+                  <div class="form-material">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column class="form-material" name="Popularity">
+                <ng-template class="form-material" let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <div class="form-material">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Measurement">
+                <ng-template class="form-material" let-value="value" ngx-datatable-cell-template>
+                  <div class="form-material">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Measurement Type">
+                <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <div class="form-material">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Image Url">
+                <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <div class="form-material">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Quantity">
+                <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <div class="form-material">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="&nbsp;">
+                  <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+                      <button _ngcontent-c8="" class="btn btn-danger btn-outline-danger ripple text-center">
+                        <i _ngcontent-c8="" class="icofont icofont-ui-delete"></i>
+                      </button>
+                  </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+              <!-- <table  class="table table-stripted table-bordered" [ngStyle]="{'min-width' : '100%'}">
+                <tr [ngStyle]="{'border-bottom': '1px solid #fff' , 'padding-bottom' : '0' , 'display' : 'flex' , 'flex-direction' : 'row' ,     'justify-content': 'space-between' , 'flex-wrap': 'nowrap'}">
+                  <td class="">
+                    Subtitle
+                  </td>
+                  <td class="">
+                    VendorId
+                  </td>
+                  <td class="">
+                    Poularity
+                  </td>
+                  <td class="">
+                    Measurement
+                  </td>
+                  <td class="">
+                    Type
+                  </td>
+                  <td class="">
+                    Quantity
+                  </td>
+                  <td class="">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tbody>
+                <tr [ngStyle]="{'height' : '47px' , 'padding-bottom' : '0' , 'display' : 'flex' , 'flex-direction' : 'row' ,     'justify-content': 'space-between' , 'flex-wrap': 'nowrap'}">
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control expanded-input" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </td>
+
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control expanded-input" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </td>
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control expanded-input" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </td>
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control expanded-input" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </td>
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control expanded-input" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </td>
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}">
+                    <div class="form-group form-primary">
+                      <input type="text" name="footer-email" class="form-control expanded-input" required="">
+                      <span class="form-bar"></span>
+                      <label class="float-label"></label>
+                    </div>
+                  </td>
+                  <td class="form-material" *ngIf="true" [ngStyle]="{'border' : 0}" colspan="2">
+                    <button class="btn btn-danger ripple light"><i class="icofont icofont-ui-delete" [ngStyle]="{'margin-right' : '0px'}"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+              </table>  -->
+          
+            </div>
+            <!-- This div closes the dt-desc class, presented -->
+
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a [ngStyle]="{'display': 'flex', 'align-items': 'center' , 'position' :'relative' , 'top' : '9px' , 'left' : '12px'}"
+              href="javascript:;" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+              (click)="toggleExpandRow(row)">
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Name">
+          <ng-template class="form-material" let-row="row" ngx-datatable-cell-template>
+            <div class="form-material">
+              <div class="form-group form-primary">
+                <input type="text" name="footer-email" class="form-control" required="">
+                <span class="form-bar"></span>
+                <label class="float-label"></label>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column class="form-material" name="Brand">
+          <ng-template class="form-material" let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <div class="form-material">
+              <div class="form-group form-primary">
+                <input type="text" name="footer-email" class="form-control" required="">
+                <span class="form-bar"></span>
+                <label class="float-label"></label>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Measurement">
+          <ng-template class="form-material" let-value="value" ngx-datatable-cell-template>
+            <div class="form-material">
+              <div class="form-group form-primary">
+                <input type="text" name="footer-email" class="form-control" required="">
+                <span class="form-bar"></span>
+                <label class="float-label"></label>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Features">
+          <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="form-material">
+              <div class="form-group form-primary">
+                <input type="text" name="footer-email" class="form-control" required="">
+                <span class="form-bar"></span>
+                <label class="float-label"></label>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Description">
+          <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="form-material">
+              <div class="form-group form-primary">
+                <input type="text" name="footer-email" class="form-control" required="">
+                <span class="form-bar"></span>
+                <label class="float-label"></label>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Fields">
+          <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="form-material">
+              <div class="form-group form-primary">
+                <input type="text" name="footer-email" class="form-control" required="">
+                <span class="form-bar"></span>
+                <label class="float-label"></label>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </app-card>
+  </div>
+</div>

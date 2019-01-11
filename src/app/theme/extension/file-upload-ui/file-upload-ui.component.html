@@ -1,0 +1,71 @@
+<div class="page-body">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-card [title]="'Angular2 File Upload'">
+          <img class="img-fluid img-radius" src="{{imageUrl}}" alt="Image not found">
+        <div class="row">
+          <div class="col-md-3">
+            
+
+            <div class="sub-title">Multiple File</div>
+            <label class="custom-file mb-3">
+              <input type="file"  multiple class="custom-file-input" (change)="onFileSelected($event)" ng2FileSelect [uploader]="uploader">
+              
+            </label>
+            
+           
+          </div>
+
+          <div class="col-md-9">
+            <div class="sub-title">Image Queue</div>
+            
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                
+                <tr>
+                  <th style="padding:1px;">Image</th>
+                  <th style="padding:1px;" width="50%">Name</th>
+                  <th style="padding:1px;">Size</th>
+                  <th style="padding:1px;">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                  <td></td>
+                  <td><strong>{{ item?.file?.name }}</strong></td>
+                  <!--td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td-->
+                  <td>Size</td>
+                  <td nowrap>
+                    <button type="button" class="btn btn-danger btn-sm ripple light" (click)="item.remove()">
+                      <span class="fa fa-trash"></span> Remove
+                    </button>
+                  </td>
+                </tr>
+                
+                </tbody>
+              </table>
+            </div>
+
+            <!--div>
+              <div class="sub-title">Queue progress</div>
+              <p><ngb-progressbar type="primary" [value]="uploader.progress"></ngb-progressbar></p>
+
+             
+              <button type="button" class="btn btn-success ripple light m-b-5" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                <span class="fa fa-upload"></span> Upload all
+              </button>
+              <button type="button" class="btn btn-warning ripple light m-b-5" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                <span class="fa fa-ban"></span> Cancel all
+              </button>
+              <button type="button" class="btn btn-danger ripple light m-b-5" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                <span class="fa fa-trash"></span> Remove all
+              </button>
+            </div-->
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+
+</div>
