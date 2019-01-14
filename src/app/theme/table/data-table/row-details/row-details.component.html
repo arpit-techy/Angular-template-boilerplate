@@ -37,12 +37,18 @@
         <!-- Row Detail Template -->
         <ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-            <div class="dt-desc">
+            <div class="dt-desc" [ngStyle]="{'position' : 'relative' }">
+                <button class="btn btn-primary btn-outline-primary ripple" [ngStyle]="{'position' : 'absolute' ,'padding' : '5px' , 'left' :'5px', 'top' : '10px'}"><i [ngStyle]="{'position':'relative' , 'left' : '2px'}" class="icofont icofont-ui-add"></i></button>
             <!-- Detail table starts here!! -->
             <ngx-datatable [ngStyle]="{'width' : '100%'}" #myTable class="data-table" [rows]='rows' [limit]="10"
               [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'">
-              
-              
+              <!-- Markup for the Add button for Product Varient -->
+              <!-- <ngx-datatable-column name="">
+                <ng-template class="form-material" let-row="row" ngx-datatable-cell-template>
+                  
+                </ng-template>
+              </ngx-datatable-column> -->
+              <!-- End of the markup for Product varient add button -->
               <ngx-datatable-column name="Subtitle">
                 <ng-template class="form-material" let-row="row" ngx-datatable-cell-template>
                   <div class="form-material">
@@ -111,7 +117,7 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="&nbsp;">
                   <ng-template class="form-material" let-row="row" let-value="value" ngx-datatable-cell-template>
-                      <button _ngcontent-c8="" class="btn btn-danger btn-outline-danger ripple text-center">
+                      <button _ngcontent-c8="" class="btn btn-danger btn-outline-danger ripple text-center" [ngStyle]="{'padding' : '5px'}">
                         <i _ngcontent-c8="" class="icofont icofont-ui-delete"></i>
                       </button>
                   </ng-template>
