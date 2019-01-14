@@ -1,17 +1,147 @@
 <div class="row">
   <div class="col-sm-12">
-    <app-card [title]="'Ng-X Pagination'">
-      <span class="m-b-20">use class <code>data-table</code> with ngx-datatable</span><br><br>
-      <ngx-datatable
-        class="data-table"
-        [rows]="rowsClient"
-        [columns]="[{name:'Name'},{name:'Gender'},{name:'Company'}]"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [scrollbarH]="true"
-        [rowHeight]="'auto'"
-        [limit]="10">
+    <app-card [title]="''" [classHeader]="true" [cardClass]="'latest-activity-card'" [headerClass]="'borderless'">
+      <!-- This will be a separate component -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="pull-right" [ngStyle]="{'display' : 'flex' , 'padding' : '2%'}">
+
+            <select name="select" class="form-control" [ngStyle]="{'width' : '200px'}">
+              <option value="opt1">Select Category</option>
+              <option value="opt2">Type 2</option>
+              <option value="opt3">Type 3</option>
+              <option value="opt4">Type 4</option>
+              <option value="opt5">Type 5</option>
+              <option value="opt6">Type 6</option>
+              <option value="opt7">Type 7</option>
+              <option value="opt8">Type 8</option>
+            </select>
+            <select name="select" class="form-control" [ngStyle]="{'margin-left': '5%', 'width' : '200px'}">
+              <option value="opt1">Select Sub Category</option>
+              <option value="opt2">Type 2</option>
+              <option value="opt3">Type 3</option>
+              <option value="opt4">Type 4</option>
+              <option value="opt5">Type 5</option>
+              <option value="opt6">Type 6</option>
+              <option value="opt7">Type 7</option>
+              <option value="opt8">Type 8</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- End of the new component -->
+      <span class="code-header">use class <code>expandable</code> and <code>data-table</code> inside ngx-datatable
+        element with <code>ngx-datatable-column</code> elements</span>
+      <ngx-datatable [ngStyle]="{'width' : '100%'}" #myTable class="data-table expandable" [rows]='rows' [limit]="10"
+        [columnMode]="'force'" [scrollbarH]="true" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" (page)="onPage($event)">
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <div class="dt-desc" [ngStyle]="{'position' : 'relative' }">
+                <!-- <button class="btn btn-primary btn-outline-primary ripple" [ngStyle]="{'position' : 'absolute' ,'padding' : '5px' , 'left' :'5px', 'top' : '10px'}"><i [ngStyle]="{'position':'relative' , 'left' : '2px'}" class="icofont icofont-ui-add"></i></button> -->
+            <!-- Detail table starts here!! -->
+          
+                       
+            <table class="table table-hover table-borderless">
+              <thead>
+              <tr class="text-align-center">
+                <th>Subtitle</th>
+                <th>Popularity</th>
+                <th>Image</th>
+                <th>Measurement Type</th>
+                <th>Measurement</th>
+                <th>Quantity</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="text-align-center">
+                <td>John Deo</td>
+                <td>1</td>
+                <td><img src="assets/images/widget/PHONE1.jpg" alt="" class="img-fluid"></td>
+                <td>Moto G5</td>
+                <td>10</td>
+              
+                <td><label class="label label-warning">Pending</label></td>
+                <td><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+              </tr>
+              <tr class="text-align-center" >
+                <td>Jenny William</td>
+                <td>12</td>
+                <td><img src="assets/images/widget/PHONE2.jpg" alt="" class="img-fluid"></td>
+                <td>iPhone 8</td>
+                <td>16</td>
+               
+                <td><label class="label label-primary">Paid</label></td>
+                <td><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+              </tr>
+              <tr class="text-align-center">
+                <td>Lori Moore</td>
+                <td>32</td>
+                <td><img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"></td>
+                <td>Redmi 4</td>
+                <td>20</td>
+               
+                <td><label class="label label-success">Success</label></td>
+                <td><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div> 
+              
+            <!-- </div> -->
+            <!-- This div closes the dt-desc class, presented -->
+
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <ngx-datatable-column class="border-bottom-1" [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a [ngStyle]="{'display': 'flex', 'align-items': 'center' , 'position' :'relative' , 'top' : '9px' , 'left' : '12px'}"
+              href="javascript:;" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+              (click)="toggleExpandRow(row)">
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column class="border-bottom-1" name="Name">
+          <ng-template class="bulk-edit__view" let-row="row" ngx-datatable-cell-template>
+            <td class="bulk-edit__view-element">Name</td>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column class="border-bottom-1" name="Brand">
+          <ng-template class="bulk-edit__view" let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <td class="bulk-edit__view-element">Brand</td>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column class="border-bottom-1" name="Measurement">
+          <ng-template class="bulk-edit__view" let-value="value" ngx-datatable-cell-template>
+            <td class="bulk-edit__view-element">Measurement</td>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Image" class="border-bottom-1">
+          <ng-template class="bulk-edit__view" let-row="row" let-value="value" ngx-datatable-cell-template>
+            <td class="bulk-edit__view-element">
+              <img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"> &nbsp;&nbsp;&nbsp;
+              <img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"> &nbsp;&nbsp;&nbsp;
+              <img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"> &nbsp;&nbsp;&nbsp;
+              <img src="assets/images/widget/PHONE3.jpg" alt="" class="img-fluid"> &nbsp;&nbsp;&nbsp;
+            </td>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Description" class="border-bottom-1">
+          <ng-template class="bulk-edit__view" let-row="row" let-value="value" ngx-datatable-cell-template>
+            <td class="bulk-edit__view-element">
+                <label class="label label-primary">Success</label>
+                <label class="label label-danger">Paid</label>
+                <label class="label label-success">Demo</label>
+            </td>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column class="border-bottom-1" name="Fields">
+          <ng-template class="bulk-edit__view" let-row="row" let-value="value" ngx-datatable-cell-template>
+            <td class="bulk-edit__view-element"><a href="javascript:"><i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-green"></i></a><a href="javascript:"><i class="feather icon-trash-2 f-w-600 f-16 text-c-red"></i></a></td>
+          </ng-template>
+        </ngx-datatable-column>
       </ngx-datatable>
     </app-card>
   </div>
